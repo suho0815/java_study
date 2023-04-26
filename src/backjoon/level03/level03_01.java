@@ -14,5 +14,6 @@ public class level03_01 {
 			System.out.println(a +" * "+i + " = "+(a*i));
 		}
 		
+		sc.close();
 	}
 }

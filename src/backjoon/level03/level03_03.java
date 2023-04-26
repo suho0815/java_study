@@ -16,5 +16,6 @@ public class level03_03 {
 		}
 		System.out.println(sum);
 		
+		sc.close();
 	}
 }
