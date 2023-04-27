@@ -13,6 +13,6 @@ public class level03_07 {
 			int b = sc.nextInt();
 			System.out.println("Case #"+i+": " + (a + b));
 		}
-		
+		sc.close();
 	}
 }

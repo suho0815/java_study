@@ -2,16 +2,19 @@ package backjoon.level03;
 
 import java.util.*;
 
-public class level03_08 {
+public class level03_12 {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int t = sc.nextInt();
-		for(int i=1; i <= t; i++) {
+		while(sc.hasNext()) {
 			int a = sc.nextInt();
 			int b = sc.nextInt();
-			System.out.println("Case #"+i+": " + a + " + " + b + " = " + (a + b));
+			
+//			if((a >= 10 || a <= 0) || (b >= 10 || b <= 0)) {	
+//				break;
+//			}
+			System.out.println(a+b);
 		}
 		sc.close();
 	}
