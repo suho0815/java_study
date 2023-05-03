@@ -11,14 +11,29 @@ public class level06_06 {
 		String str = sc.nextLine();
 		String upperstr = "";
 		int []carr = new int[26];
+		int maxc = 0;
+		int maxi = 0;
 		
 		upperstr = str.toUpperCase(); // 입력받은 문자열 대문자로 변경
-		System.out.println(upperstr);
 		
 		for(int i = 0; i < str.length() ; i++) {
-			carr[str.charAt(i)-65]++;
+			carr[upperstr.charAt(i) - 65]++;
 		}
 		
+		for(int i = 0; i < carr.length; i++) {
+			if(maxc < carr[i]) {
+				maxc = carr[i];
+				maxi = i;
+			}
+		}
+		
+		for(int i = 0; i < carr.length; i++) {
+			if(maxc == carr[i] && i != maxi) {
+				System.out.println("?");
+				return;
+			}
+		}
+		System.out.println((char)(maxi + 65));
 		
 	}
 }
