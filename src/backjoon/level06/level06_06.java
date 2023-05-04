@@ -34,6 +34,7 @@ public class level06_06 {
 			}
 		}
 		System.out.println((char)(maxi + 65));
+		sc.close();
 		
 	}
 }
