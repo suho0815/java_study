@@ -17,12 +17,12 @@ public class level06_08 {
 		for(int i = 0; i < croa.length; i++) {
 			for(int j = 0; j < str.length(); j++) {
 				if (str.indexOf(croa[i], j) >= 0) {
-					System.out.println(str.indexOf(croa[i], j));
+					j += croa[i].length() - 1;
 					cnt++;
 				}
-				
 			}
 		}
+		
 		System.out.println(cnt);
 	}
 }
