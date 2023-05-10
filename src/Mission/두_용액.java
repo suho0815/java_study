@@ -1,6 +1,7 @@
 package Mission;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 class solution {
@@ -23,24 +24,11 @@ class solution {
 }
 public class 두_용액 {
 
-	static void sortdata(int[] v) {
-		for(int i = 0; i < v.length; i++) {
-			for(int j = 1; j < v.length - i; j++) {
-				int temp = 0;
-				if(v[j-1] > v[j]) {
-					temp = v[j-1];
-					v[j-1] = v[j];
-					v[j] = temp;
-				}
-			}
-		}
-	}
-	
 	static void find0(int[] v) {
 		int pl = 0;
 		int pr = v.length -1;
 		
-		while(true) {
+		while(pl < pr) {
 			
 		}
 		
@@ -62,7 +50,8 @@ public class 두_용액 {
 		}
 		sc.close();
 		//풀이
-		sortdata(v);
+		Arrays.sort(v);
+		
 		
 		for(int i = 0; i <v.length; i++) {
 			System.out.print(v[i]+ " ");
