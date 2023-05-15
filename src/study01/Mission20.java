@@ -1,4 +1,4 @@
-package Mission;
+package study01;
 
 public class Mission20 {
 

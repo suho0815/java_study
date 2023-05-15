@@ -1,4 +1,4 @@
-package Mission;
+package study02;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,6 +29,8 @@ public class 탑 {
 		Stack<p> h = new Stack<>(); //높이
 //		Stack<Integer> v = new Stack<>(); //출력할 인덱스
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		
 		for(int i = 0; i < n; i++) { 
 			//토큰으로 찢은 문자열을 버퍼로 한번에 입력 받음과 동시에 스택의 데이터와 비교하여 바로 출력
 			int temp = Integer.parseInt(st.nextToken());
@@ -41,7 +43,6 @@ public class 탑 {
 					h.pop();
 				}
 			}
-			
 
 			if(h.isEmpty()) {
 				System.out.print(0 + " ");
@@ -51,26 +52,7 @@ public class 탑 {
 //			v[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		//풀이
-		
-		
-//		int val[] = new int[n];
-//		val[0] = 0;
-//		for(int i = 1; i < v.length; i++) {
-//			for(int j = i-1; j >= 0; j--) {
-//				if(v[i] < v[j]) {
-//					val[i] = j+1;
-//					j = -1;
-//				}
-//			}
-//		}
-		
-		
-		
-		//출력
-//		for(int i = 0; i < val.length; i++) {
-//			System.out.print(val[i]+ " ");
-//		}
+
 	}
 
 }
