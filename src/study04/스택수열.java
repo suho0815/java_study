@@ -39,7 +39,6 @@ public class 스택수열 {
 			
 		}
 		System.out.println(stringbuilder);
-		
 
 	}
 
