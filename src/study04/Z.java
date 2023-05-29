@@ -7,34 +7,33 @@ import java.util.StringTokenizer;
 
 public class Z {
 
-	public static int count = 0;
+	public static int cnt = 0;
 	
-	public static void findValue(int n, int r, int c) {
-		int nsize = (int) Math.pow(2, n);
-		int row_mid = nsize/2;
-		int col_mid = nsize/2;
-		int block = ( (nsize * nsize) / 4);
+	public static void findZ(int sidelen, int r, int c) {
 		
-		if(n == 1) {
-			System.out.println(count);
+		int row_mid = sidelen/2;
+		int col_mid = sidelen/2;
+		int block = ( (sidelen * sidelen) / 4); // 한 블록의 크기
+		
+		if(sidelen == 1) {
+			System.out.println(cnt);
 			return;
 		}
 		
-		if(row_mid <= r && col_mid <= c) { //(0,0)
-			findValue(n/2 , r, c);
-		}else if(row_mid <= r && col_mid >= c) { // (0, 1)
-			count = count + block;
-			findValue(n/2 , r, c);
-		}else if(row_mid >= r && col_mid <= c) { // (1, 0)
-			count = count + (block*2);
-			findValue(n/2 , r, c);
-		}else if(row_mid >= r && col_mid >= c) { // (1, 1)
-			count = count + (block*3);
-			findValue(n/2 , r, c);
+		if(row_mid > r && col_mid > c) { //(0,0)
+			findZ(sidelen/2 , r, c);
+		}else if(row_mid > r && col_mid <= c) { // (0, 1)
+			cnt = cnt + block;
+			findZ(sidelen/2 , r, c - col_mid);
+		}else if(row_mid <= r && col_mid > c) { // (1, 0)
+			cnt = cnt + (block*2);
+			findZ(sidelen/2 , r - row_mid, c);
+		}else if(row_mid <= r && col_mid <= c) { // (1, 1)
+			cnt = cnt + (block*3);
+			findZ(sidelen/2 , r - row_mid, c - col_mid);
 		}
 		
 	}
-	
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -44,8 +43,8 @@ public class Z {
 		int r = Integer.parseInt(st.nextToken());
 		int c = Integer.parseInt(st.nextToken());
 		
-		findValue(n, r, c);
+		int sidelen = (int) Math.pow(2, n); // 한 변의 길이
 		
+		findZ(sidelen, r, c);
 	}
-
 }
