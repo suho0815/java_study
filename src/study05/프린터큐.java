@@ -49,6 +49,7 @@ public class 프린터큐 {
 			int m = Integer.parseInt(st.nextToken()); //찾고자하는 문서의 index
 			
 			Queue<print> qu = new LinkedList<>();
+			//우선순위 큐 쓰면 쉽게 풀릴듯..?
 			PriorityQueue<Integer> impqu = new PriorityQueue<>(Collections.reverseOrder());
 			st = new StringTokenizer(br.readLine());
 			
