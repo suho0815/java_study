@@ -23,7 +23,7 @@ public class 로또 {
 			}
 			
 			int []s = new int[k];
-			int []visited = new int[6]; // 몇번 인덱스까지 순회하며 경우의 수를 확인 했는가? 
+			int []visited = new int[6]; // s[]배열의 몇번 인덱스까지 순회하며 경우의 수를 확인 했는가? 
 			int []results = new int[6]; 
 			Stack<Integer> stack = new Stack<Integer>();
 			for(int i = 0; i < k; i++) {
@@ -32,59 +32,50 @@ public class 로또 {
 				if(stack.size() < 6) {
 					stack.push(s[i]);
 					results[i] = s[i];
+					visited[i] = i;
 				}
 			}
 			
-			int ptemp = 0; //s[0] 번째 값이 k개의 입력값을 돌며 경우의 수를 확인 해봤는가?
-			int p = 0;
+			int ptemp = 6; //results[] 배열 순회할 인덱스 
+			int p = 6; //s[] 배열 순회할 인덱스
 			do {
-				if(stack.size() == 6) { 
-					p = stack.pop();
-					p = Arrays.asList(s).indexOf(p) + 1;
-					visited[5] = Arrays.asList(s).indexOf(p);
+				// 결과가 나오면
+				if(stack.size() >= 6) { 
+					stack.pop();
+					p = visited[5] + 1;
+					visited[5]++;
 					for(int i = 0; i < results.length; i++) {
 						sb.append(results[i]).append(" ");
 					}
 					sb.append("\n");
-					
+					ptemp--;
 				}
 				
-				
-			}while(!stack.isEmpty());
-			
-			
-//			int px = 0; //
-//			int temp = s[px];
-//			int py = 0;
-//			results[0] = s[0];
-//			while(px < k-1) {
-//				
-//				if(stack.isEmpty()){
-//					px++;
-//					stack.push(s[px]);
-//					results[px] = s[px];
-//				}else {
-//					py++;
-//					stack.push(s[py]);
-//					results[py] = s[py];
-//				}
-//				
-//				if(stack.peek() == results[py]) {
-//					py++;
-//					if(py >= k -1) {
-//						stack.pop();
-//						py = Arrays.asList(s).indexOf(stack.peek()) + 1;
+				//막히면 되돌리기
+				if(visited[ptemp] >= k -1) {
+					if(ptemp - 1 < 0) {
+						break;
+					}
+					visited[ptemp - 1]++;
+					visited[ptemp] = visited[ptemp - 1] + 1;
+					ptemp--;
+					p = visited[ptemp]++;
+					stack.pop();
+				}else {
+					stack.push(s[p]);
+					results[ptemp] = s[p];
+					visited[ptemp]++;
+					p = visited[ptemp];//
+					ptemp++;
+//					if(ptemp <= results.length -1) {
+//						
 //					}
-//				}
-//				
-//				if(stack.size() == results.length) {
-//					for(int i = 0; i <results.length; i++) {
-//						System.out.print(results[i]);
-//					}
-//					System.out.println();
-//				}
-//
-//			}
+				}
+
+			}while(visited[0] < k-1 || visited[5] < k-1);
+			
+			System.out.println(sb);
+
 			
 			
 		}
