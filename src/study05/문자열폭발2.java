@@ -10,31 +10,29 @@ public class 문자열폭발2 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		
 		Stack<Character> stack = new Stack<>();
-		StringBuilder sb = new StringBuilder();
+		//StringBuilder sb = new StringBuilder();
 		String str = br.readLine();
 		String boom = br.readLine();
 		
 		br.close();
 		
-		long beforeTime = System.currentTimeMillis();
+		//int p = 0;
+		int boom_len = boom.length();
+		int str_len = str.length();
 		
-		int p = 0;
-		
-		for (int i = 0; i < str.length(); i++) {
+		for (int i = 0; i < str_len; i++) {
 			stack.push(str.charAt(i));
-			
-			if(stack.size() >= boom.length()) {
-				p = stack.size() - boom.length();
+			int st_size = stack.size();
+			if(st_size >= boom_len) {
 				int cnt = 0;
-				for(int j = 0; j < boom.length(); j++) { //스택의 끝에 char데이터들을 boom과 비교해서 맞으면 pop
-					if(stack.get(p + j) == boom.charAt(j)) {
+				for(int j = 0; j < boom_len; j++) { //boom 인지 확인
+					if(stack.get(st_size - boom_len + j) == boom.charAt(j)) {
 						cnt++;
 					}
 				}
-				if(cnt == boom.length()) {
-					for(int j = 0; j < boom.length(); j++) {
+				if(cnt == boom_len) { //boom 이면 pop
+					for(int j = 0; j < boom_len; j++) {
 						stack.pop();
 					}
 				}
@@ -44,17 +42,15 @@ public class 문자열폭발2 {
 		
 		if(stack.isEmpty()) {
 			System.out.println("FRULA");
-		}else {
-			for(int i = 0; i < stack.size(); i++) {
-				sb.insert(0, stack.pop());
-			}
-			System.out.println(sb);
+			return;
 		}
+		String result = "";
+		while (!stack.isEmpty()) {
+			//sb.insert(0, stack.pop());
+			result = stack.pop() + result;
+		}
+		System.out.println(result);
 		
-		
-		long afterTime = System.currentTimeMillis(); 
-		long secDiffTime = (afterTime - beforeTime)/1000;
-		System.out.println("시간차이(m) : "+secDiffTime);
 	}
 
 }
