@@ -11,55 +11,38 @@ public class 문자열폭발3 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-//		Stack<Character> stack = new Stack<>();
-		ArrayList<Character> list = new ArrayList<>();
-		//StringBuilder sb = new StringBuilder();
+		Stack<Character> stack = new Stack<>();
 		String str = br.readLine();
 		String boom = br.readLine();
 		
 		br.close();
-		
-		//int p = 0;
-		
+		int p = 0;
 		for (int i = 0; i < str.length(); i++) {
-			list.add(str.charAt(i));
+			stack.push(str.charAt(i));
 			
-			if(list.size() >= boom.length()) {
-				boolean fire = true;
+			if(stack.size() >= boom.length()) {
+				int cnt = 0;
 				for(int j = 0; j < boom.length(); j++) { //boom 인지 확인
-					if(list.get(list.size() - boom.length() + j) != boom.charAt(j)) {
-						fire = false;
-						break;
+					if(stack.get(stack.size() - boom.length() + j) == boom.charAt(j)) {
+						cnt++;
 					}
 				}
-				if(fire) { //boom 이면 boom값 삭제
-					for(int j = 1; j <= boom.length(); j++) {
-						list.remove(list.size() - j);
+				if(cnt == boom.length()) { //boom 이면 pop
+					for(int j = 0; j < boom.length(); j++) {
+						stack.pop();
 					}
 				}
 			}
-			
 		}
-		
-		if(list.isEmpty()) {
+		if(stack.isEmpty()) {
 			System.out.println("FRULA");
 			return;
-		}else {
-			for(char c : list) {
-				System.out.print(c);
-			}			
 		}
-		
-//		if(stack.isEmpty()) {
-//			System.out.println("FRULA");
-//			return;
-//		}
-//		String result = "";
-//		while (!stack.isEmpty()) {
-//			//sb.insert(0, stack.pop());
-//			result = stack.pop() + result;
-//		}
-//		System.out.println(result);
+		String result = "";
+		while (!stack.isEmpty()) {
+			result = stack.pop() + result;
+		}
+		System.out.println(result);
 		
 	}
 

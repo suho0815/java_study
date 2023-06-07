@@ -16,8 +16,7 @@ public class 문자열폭발 {
 		
 		br.close();
 		
-		long beforeTime = System.currentTimeMillis();
-		
+//		long beforeTime = System.currentTimeMillis();
 		
 		int in = strbuf.indexOf(boom);
 		
@@ -33,9 +32,9 @@ public class 문자열폭발 {
 		}
 		
 		
-		long afterTime = System.currentTimeMillis(); 
-		long secDiffTime = (afterTime - beforeTime)/1000;
-		System.out.println("시간차이(m) : "+secDiffTime);
+//		long afterTime = System.currentTimeMillis(); 
+//		long secDiffTime = (afterTime - beforeTime)/1000;
+//		System.out.println("시간차이(m) : "+secDiffTime);
 	}
 
 }

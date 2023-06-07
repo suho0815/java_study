@@ -41,7 +41,7 @@ public class 프린터큐 {
 		
 		int t = Integer.parseInt(br.readLine()); //테스트케이스 수
 		
-		int []cnt = new int[t];
+		int []cnt = new int[t]; // 각 테스트케이스에 대한 결과 값
 		for(int i = 0; i < t; i++) { // 테스트케이스 수 만큼 반복
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			
@@ -54,7 +54,6 @@ public class 프린터큐 {
 			st = new StringTokenizer(br.readLine());
 			
 			for(int j = 0; j < n; j++) {
-				
 				int p = Integer.parseInt(st.nextToken()); //중요도 입력
 				impqu.add(p);
 				qu.add(new print(j, p));

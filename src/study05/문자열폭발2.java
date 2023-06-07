@@ -35,7 +35,6 @@ public class 문자열폭발2 {
 					}
 				}
 			}
-			
 		}
 		
 		if(stack.isEmpty()) {

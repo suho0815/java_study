@@ -15,7 +15,8 @@ public class 로또2 {
 	public static int[] results = new int[6]; // 결과 값
 	public static StringBuilder sb = new StringBuilder();
 	
-	public static void backtracking(int cnt, int state) { // cnt : 로또 번호 개수, state : 오름차순으로 찍어야 하므로 재귀로 넘길 때 for문에 초기값으로 사용
+	// cnt : 로또 번호 개수, state : 오름차순으로 찍어야 하므로 재귀로 넘길 때 다음 번호 찍어내기 위함
+	public static void backtracking(int cnt, int state) { 
 		if(cnt == 6) {
 			for(int re : results) {
 				sb.append(re).append(" ");
