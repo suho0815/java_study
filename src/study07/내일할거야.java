@@ -17,7 +17,6 @@ class homework {
 	}
 
 }
-
 public class 내일할거야 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -43,6 +42,12 @@ public class 내일할거야 {
 			}
 		};
 		Arrays.sort(hws, ch.reversed());
+		
+		//정렬 확인
+//		for (int i = 0; i < hws.length; i++) {
+//			System.out.printf("d : %d  t : %d " , hws[i].d, hws[i].t);
+//			System.out.println();
+//		}
 		
 		int day = 0; //며칠 동안 놀 수 있음? 
 		hws[0].start_day = hws[0].t - hws[0].d + 1;
