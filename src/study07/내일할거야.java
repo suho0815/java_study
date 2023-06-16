@@ -55,20 +55,21 @@ public class 내일할거야 {
 		hws[0].end_day = hws[0].t;
 		for(int i = 1; i < n; i++) {
 			// 현재과제 마감일과 다음과제 시작일이랑 겹치는 경우 (다음 과제때문에 현재과제를 일찍 시작해야 하는 경우)
-			if(hws[i-1].start_day <= hws[i].t) {
+			if(hws[i-1].start_day <= hws[i].t) { // 조건 수정( 다음 과제 때문에 일찍 해야하는 경우 조건에 맞지 않아 수정)
 				hws[i].end_day = hws[i-1].start_day -1;
 				hws[i].start_day = hws[i].end_day - hws[i].d + 1;
-			}else { // 과제를 마감일까지 끝내도 되는 경우
+			}else {
+				// 과제를 마감일까지 끝내도 되는 경우
 				hws[i].end_day = hws[i].t;
 				hws[i].start_day = hws[i].end_day - hws[i].d + 1;
 			}
 			
-			// 최대 몇 일 연속으로 놀 수 있는지 계산
+			// 최대 몇 일 연속으로 놀 수 있는지 계산 (이거 아님,, 내일부터 연속으로 몇일까지 놀수 있는가?를 구해야 됨)
 //			System.out.println((hws[i-1].start_day-1));
 //			System.out.println((hws[i].end_day+1));
 //			System.out.println((hws[i-1].start_day-1) - (hws[i].end_day+1));
-			if(day < (hws[i-1].start_day-1) - (hws[i].end_day+1) +1)
-				day = (hws[i-1].start_day-1) - (hws[i].end_day+1) +1;
+//			if(day < (hws[i-1].start_day-1) - (hws[i].end_day+1) +1)
+//				day = (hws[i-1].start_day-1) - (hws[i].end_day+1) +1;
 		}
 		
 		if(day < hws[n-1].start_day -1)

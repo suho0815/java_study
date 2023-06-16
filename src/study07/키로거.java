@@ -33,7 +33,7 @@ public class 키로거 {
 						}
 						break;
 					case '-':
-						if(st.peek() != null) {
+						if(!st.isEmpty()) {
 							st.pop();
 						}
 						break;
