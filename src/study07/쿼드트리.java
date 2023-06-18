@@ -9,10 +9,29 @@ public class 쿼드트리 {
 	static StringBuilder sb = new StringBuilder();
 	
 	public static void QuadTree(int n, int x, int y) {
+		boolean isok = true;
 		
+		for(int i = x; i < x+n; i++) {
+			for(int j = y; j < y+n; j++) {
+				if(arr[i][j] != arr[x][y]) {
+					isok = false;
+				}
+			}
+		}
 		
+		if(isok) {
+			sb.append(arr[x][y]);
+			return;
+		}
 		
+		int size = n/2;
 		
+		sb.append('(');
+		QuadTree(size, x, y); // 왼쪽 위
+		QuadTree(size, x , y + size); // 오른쪽 위
+		QuadTree(size, x + size, y); // 왼쪽 아래
+		QuadTree(size, x + size, y + size); // 오른쪽 아래
+		sb.append(')');
 	}
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -26,7 +45,7 @@ public class 쿼드트리 {
 			String str = br.readLine();
 			
 			for(int j = 0; j < str.length(); j++) {
-				arr[i][j] = str.charAt(j);
+				arr[i][j] = (str.charAt(j) )-48;
 			}
 		}
 		
